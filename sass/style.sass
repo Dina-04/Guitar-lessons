@@ -1,0 +1,632 @@
+*
+    box-sizing: border-box       /* Чтобы паддинги и марджины были верные */
+    
+/* Шрифты */
+@font-face 
+    font-family: "MontserratT"
+    src: url('../fonts/Montserrat-Regular.tff')
+    font-weight: regular
+    font-style: normal
+
+@font-face 
+    font-family: "MontserratT"  /* Шрифт называется одинаково, чтобы задавать только font-weight */ 
+    src: url('../fonts/Montserrat-SemiBold.tff')
+    font-weight: bold
+    font-style: normal
+
+html   /* Применяем шрифт ко всему сайту */
+    font-family: "MontserratT"
+    font-weight: regular
+
+$color-blue: #5290EA      /* Задали переменную синего цвета */
+$color-orange: #F28B64
+$color-grey: #E2E2E2
+
+.container
+    position: relative
+    max-width: 1140px             /* здесь мы задали грид сетку и выровняли */
+    margin: 0 auto
+.main-section                        /* здесь цвет фона */ 
+    position: relative               /* Задаем, чтобы обрезать overflow */
+    min-height: 800px                 /* При растягивании секции, добавлении элементов будет все ок, поэтому высота указывается в мин */
+    background-color: #F0F0F0
+    padding-top: 16px                  /* Отступ контейнера сверху 16рх */
+    overflow: hidden          /* Все, что заходит за границы, исчезает */
+    &__nav-container                  /* Выравнивает лого и меню на 1 строку */
+        display: flex
+        flex-direction: row
+        justify-content: space-between   /* Меню выровнено по правому краю */
+        height: 69px                    /* Высота контейнера с лого и меню */
+        align-items: center             /* Центрировали меню в контейнере */
+    &__logo
+        width: 134px
+        height: 69px
+    &__content-container
+        position: relative       /* Для того чтобы сразобал позишн абсолют, это родитель */
+        display: flex
+        flex-direction: row
+    &__first-elipse
+        position: absolute        /* Позиционируем световой круг */
+        top: 129px             /* На глаз */
+        right: 80px
+    &__second-elipse           /* Позиционирование 2 круга в углу */
+        position: absolute
+        right: -120px
+        top: 650px
+
+.nav-menu
+    &__list
+        display: flex
+        flex-direction: row
+    &__list-item                   /* Отступ между словами меню 64рх */
+        margin-right: 64px
+        font-size: 18px            /* Шрифт меню */
+        font-weight: bold
+        &:last-child            /* Убираем отступ у последнего элемента, псевдокласс */
+            margin-right: 0px
+        a    /* Ссылки меню */
+            text-decoration: none  /* Убрали стили ссылок меню */
+            color: black
+
+
+.left-wrapper
+    position: relative
+    img
+        position: relative   /* Эти 2 св-ва переносят полоску на задний фон */
+        z-index: 5            /* 5 потому что он впереди всех и нужно всех спозиционировать */
+    &__rectangle-blue          /* Синяя полоска */
+        position: absolute
+        top: 150px           /* Это значение на глаз, лефт тоже */
+        left: -50px
+        width: 565.95px
+        height: 220px
+        background: $color-blue          /* Задали цвет переменной */
+        border-radius: 100px            /* Закруглили углы полоски */
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)    /* Тень на полоске, первые знач x y blur, далее с фигмы rgba цвет */
+        transform: rotate(-64deg)    /* Повернули полоску на -64 градуса */
+        z-index: 2
+    &__rectangle-orange
+        position: absolute
+        top: 160px                        /* Эти значения на глаз */
+        left: -30px                       /* Эти значения на глаз */
+        width: 618.43px
+        height: 220px
+        background: $color-orange
+        border-radius: 100px
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+        transform: rotate(-50.81deg)
+        z-index: 3           /* 3 т.к. он впереди полос но сзади человека */
+    &__rectangle-grey
+        position: absolute
+        top: 190px              /* Эти значения на глаз */
+        left: 10px              /* Эти значения на глаз */
+        width: 608.97px
+        height: 220px
+        background: $color-grey
+        border-radius: 100px
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+        transform: rotate(-36.15deg)
+        z-index: 1       /* 1 т.к. сзади всех */
+.right-wrapper
+    width: 372px              /* Ширина контейнера правого */
+    position: absolute      /* Позиционируем правый элемент */
+    top: 150px              /* Снова на глаз */
+    right: 76px
+    z-index: 5              /* Чтобы круг был поверх текста */
+    &__icons-box
+        margin-bottom: 1px
+        padding-left: 10px       /* Отступ на 10рх в контейнере от текста */
+    &__text
+        font-size: 16px
+        margin-bottom: 20px
+    &__title
+        margin-bottom: 5px            /* Расстояние от заголовка до текста */
+    
+.icons
+    display: flex             /* Выровняли иконки в ряд row*/
+    flex-direction: row
+    &__item
+        display: flex
+        justify-content: center  /* Выровняли по центру */
+        align-items: center
+        width: 40px     /* Размер иконок */
+        height: 40px
+        border: 1px solid $color-blue      /* синяя рамка */
+        border-radius: 100px               /* скруглили рамку */
+        margin-right: 17px        /* Расстояние между иконками */
+        &:last-child
+            margin-right: 0px
+        i
+            font-size: 21px            /* Это для иконок с сайта, т.к. они типо текст */
+
+.title 
+    font-size: 72px
+    position: relative
+    font-weight: bold     /* Шрифт полужирный, сам шрифт применен в начале */
+    &__hr
+        width: 65px       /* Длинна линии  под буквой Я */
+        position: absolute
+        bottom: 0px      /* Чтобы линия была под буквой Я */
+        margin: 0px
+        border: none            /* Убрали рамку */
+        border-top: 1px solid black          /* Добавили полоску сверху, иначе по 1 рх со всех сторон */
+
+.buttons
+    display: inline-flex  /* Можно писать так, 1 стокой вместо флекс дирекшион */
+    &__main-btn
+        margin-right: 32px
+        width: 200px
+        height: 60px
+        background: $color-orange
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+        border-radius: 100px
+        border: none
+        font-size: 18px
+        color: white
+        font-weight: bold
+    &__icon-btn
+        display: inline-flex
+        align-items: center
+        img
+            margin-right: 12px
+    &__text
+        font-size: 16px
+/* Световой круг */
+.elipse
+    width: 194px
+    height: 194px
+    background: linear-gradient(143.92deg, rgba(237, 123, 80, 0.5) 14.85%, rgba(72, 138, 234, 0.5) 53.25%, rgba(44, 44, 44, 0.5) 85.74%)
+    border-radius: 150px       /* Сделали из квадрата круг */
+    display: flex
+    justify-content: center
+    align-items: center
+    &__subtract               /* Круг маленький, который в цвет фона, типо вырезали */
+        width: 129.33px
+        height: 129.33px
+        background: #F0F0F0
+        border-radius: 150px          /* Радиус был 100, 150 сделали для углового круга */
+        &_big                 /* Это модификатор elipse__subtract_big*/
+            width: 188px
+            height: 188px
+    &_big                    /* Это модификатор elipse_big */
+        width: 282px
+        height: 282px
+
+/* Вторая секция */
+
+.second-section
+    overflow: hidden
+    min-height: 700px
+    background-color: #FFFFFF
+    padding-top: 32px
+    margin-bottom: 40px
+    &__container
+        position: relative
+    &__title
+        font-size: 72px
+        padding-bottom: 10px
+        margin-bottom: 40px
+.second-section__card
+    display: flex
+    min-width: 360px
+    margin-bottom: 25px
+    &__1            /* Первая карточка */
+        position: relative
+        width: 360px
+        height: 360px
+        background: $color-grey
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+        border-radius: 10px
+        margin-right: 30px
+        z-index: 2
+        img
+            position: absolute
+            top: 25px
+            height: 335px
+        &__text
+            position: absolute
+            width: 161px
+            height: 88px
+            left: 200px
+            top: 135px
+            transform: rotate(90deg)
+            font-weight: bold       /* Начертание текста полужирное */
+            p
+                font-size: 36px
+                text-align: center
+    &__2           /* Вторая карточка */
+        position: relative
+        justify-content: space-around
+        width: 360px
+        height: 360px
+        background: $color-orange
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+        border-radius: 10px
+        margin-right: 30px
+        img
+            position: absolute
+            top: 25px 
+            height: 335px
+        &__text
+            position: absolute
+            width: 277px
+            height: 88px
+            left: 145px
+            top: 135px
+            transform: rotate(90deg)
+            font-weight: bold
+            p
+                font-size: 36px
+                text-align: center
+    &__3               /* Третья карточка */
+        position: relative
+        justify-content: space-around
+        width: 360px
+        height: 360px
+        background: $color-blue
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+        border-radius: 10px
+        z-index: 2
+        img
+            position: absolute
+            top: 25px 
+            height: 335px
+        &__text
+            position: absolute
+            width: 158px
+            height: 88px
+            left: 195px
+            top: 145px
+            transform: rotate(90deg)
+            font-weight: bold
+            p
+                font-size: 36px
+                text-align: center
+
+/* Секция Иконки прогресса */
+.second-section-progress
+    display: flex              /* Выровняли иконки в строку, хз не разобралась тут */
+    justify-content: center     /* Выровняли иконки по центру */
+
+.progress__year
+    display: inline-flex          /* Выровняли текст возле кубка */
+    align-items: center
+    margin-right: 50px
+    &:last-child
+        margin-right: 0px
+    &__img
+        margin-right: 20px
+        width: 80px
+    &__text
+        font-size: 18px
+        span
+            font-size: 48px
+            font-weight: bold   /* Шрифт полужирный  */
+/* Световые круги 2 секции */
+.second-section__first-elipse 
+    position: absolute
+    top: 33px
+    right: -63px
+
+.second-section__second-elipse
+    position: absolute 
+    top: 364px
+    left: -60px 
+.elipse__subtract_white
+    background-color: white    /* Перекрасили внутренний цвет круга светового */
+
+    /* Третья секция */
+.third-section
+    position: relative
+    min-height: 640px
+    background: #f0f0f0
+    overflow: hidden
+    z-index: 0
+    &__container
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+        padding-left: 167px
+        padding-top: 46px
+    &__right-wraper
+        max-width: 480px
+    &__right-title
+        margin-bottom: 20px
+    &__text
+        margin-bottom: 30px
+        font-size: 18px
+    &__first-elipse
+        position: absolute
+        top: 140px
+        left: 110px
+        z-index: -1
+    &__figure
+        position: absolute
+        top: 249px
+        left: 15px
+        z-index: -1
+    &__second-elipse
+        position: absolute
+        right: -120px
+        top: -120px
+
+
+.title__hr_top          /* Модификатор для выравнивания подчеркивания ГОтовлю */
+    bottom: 75px
+
+
+/* Футтер */
+.footer
+    &__img    /* позиционируем гитару внизу экрана */
+        position: absolute
+        left: -250px
+        bottom: 0
+    &__container     /* Задали высоту контейнера */
+        min-height: 272px    /* Высота задается для контейнера, чтобы можно было выравнивать через flex, иначе в высоту будет ровно с элементами */
+        display: flex
+        align-items: center   /* Центрировали заголовок и значки */
+        justify-content: flex-end    /* Сдвинули их по правому краю */
+    &__title
+        margin-bottom: 20px
+
+
+/* Адаптивная верстка */
+
+/* Планшетная горизонтальная версия */
+
+@media (max-width: 1199px)     /* Адаптивная верстка, планшетная горизонтальная*/
+    .container 
+        width: 960px
+    .main-section
+        min-height: 690px         /* Изменили высоту 1 секции, делается после уменьшения всех элементов */
+    .left-wrapper
+        img
+            width: 750px      /* Уменьшили размер картинки гитариста, добавлять сначало в еод смотреть как ок, потом переносить сюда */
+       
+        &__rectangle-blue          /* Синяя полоска */
+            width: 500px           /* Изменили размер полоски */
+            height: 200px
+        &__rectangle-orange        /* Оранжевая полоска */
+            width: 550px
+            height: 200px
+        &__rectangle-grey
+            width: 550px
+            height: 200px
+    .right-wrapper                  /* Подвинули текст вправо, двигаем в коде, сюда переносим */
+        right: 20px
+    .main-section__first-elipse      /* Уменьшили круг */
+        right: 10px
+    .main-section__second-elipse 
+        top: 560px
+        
+        /* 2 секция, адаптация */
+
+    .second-section
+        min-height: 600px
+    .second-section__card            /* Не выровнялись посередине карточки, хз почему */
+        display: flex
+        justify-content: center
+    .second-section__card__1    /* Первая карточка с гитарами */
+        width: 300px
+        height: 300px
+        margin-right: 20px
+        img                       /* Уменьшили рамку */
+            height: 270px
+        &__text                    /* Уменьшили текст */
+            font-size: 30px
+            top: 120px
+            left: 150px
+    .second-section__card__2
+        width: 300px
+        height: 300px
+        margin-right: 20px
+        img                      /* Уменьшили рамку */
+            height: 270px
+        &__text                  /* Уменьшили текст */
+            font-size: 30px
+            top: 120px
+            left: 100px
+    .second-section__card__3
+        width: 300px
+        height: 300px
+        margin-right: 20px
+        img
+            height: 270px
+        &__text
+            font-size: 30px
+            top: 120px
+            left: 150px
+    .progress__year__img         /* Кубок был внизу, написала чтобы вверх его поднять */
+        z-index: 5
+    .third-section__container    /* Третья секция */
+        padding-left: 40px      /* Сделали отступ слева, слова обучение *(уменьшили) */
+    .third-section__right-wraper 
+        max-width: 450px
+  
+/* Планшетная версия вертикальная */
+ 
+@media (max-width: 991px)     /* Адаптивная верстка, планшетная вертикальная */
+    .container 
+        width: 720px
+    .main-section
+        min-height: 530px  /* Высота секции, задается после уменьшения всего в секции */
+        &__first-elipse
+            top: 70px    /* Подвинули световой круг вверх */
+        &__second-elipse
+            top: 400px    /* Вытащили круг, т.к. спрятался после высоты секции */
+    .left-wrapper
+        img
+            width: 550px
+    .left-wrapper__rectangle-blue          /* Синяя полоска */
+            width: 380px           /* Изменили размер полоски */
+            height: 130px
+    .left-wrapper__rectangle-orange
+        width: 410px
+        height: 130px
+    .left-wrapper__rectangle-grey
+        width: 380px
+        height: 130px
+    .right-wrapper
+        width: 300px
+        top: 75px
+        &__title 
+            font-size: 60px
+        &__text
+            font-size: 14px
+            margin-bottom: 10px
+    .buttons__main-btn
+        font-size: 14px
+        margin-right: 10px
+        width: 160px          /* Уменьшили размер оранжевого окна кнопки */
+        height: 50px
+    .buttons__text
+        font-size: 14px
+    .elipse
+        width: 150px
+        height: 150px
+        &__subtract                 /* Уменьшили декоративные круги */
+            width: 110px
+            height: 110px
+        &__subtract_big
+            width: 170px
+            height: 170px
+    .elipse_big
+        width: 250px
+        height: 250px
+        /* Вторая секция */
+
+    .title
+        font-size: 60px      /* Задали 60px для вспех заголовков */
+    .second-section
+        min-height: 451px          /* уМЕНЬШИЛИ секцию после уменьшения всего на странице */
+        padding-top: 20px
+        &__title
+            margin-bottom: 25px
+    .second-section__card__1
+        width: 220px
+        height: 220px
+        img                      /* Изменили размер гитары */
+            height: 195px
+        &__text
+            top: 71px
+            left: 76px
+            p
+                font-size: 24px
+
+    .second-section__card__2
+        width: 220px
+        height: 220px
+        img                          /* Изменили размер гитары */
+            height: 195px
+        &__text
+            top: 67px
+            left: 20px
+            p
+                font-size: 24px
+    .second-section__card__3
+        width: 220px
+        height: 220px
+        img                            /* Изменили размер гитары */
+            height: 195px
+        &__text
+            top: 68px
+            left: 80px
+            p
+                font-size: 24px
+    .progress__year__text
+        font-size: 14px
+        z-index: 2
+        span
+            font-size: 26px
+    .progress__year__img
+        width: 50px
+    .second-section__card               /* Уменьшили расстояние меджу карточками и значками прогресса */
+        margin-bottom: 10px
+    .second-section__second-elipse
+        top: 262px
+        left: -35px
+        z-index: 1              /* Круг закрывал текст, поэтому так */
+    .second-section__first-elipse
+        top: 61px
+        right: -21px
+
+
+    .title__hr_top       /* Третья секция */
+        bottom: 64px
+    .third-section__left-title    /* Убрали слово обучение, т.к. мало места */
+        display: none
+    .third-section__right-wraper
+        max-width: 600px
+    .third-section
+        min-height: 510px
+        &__container
+            justify-content: flex-start  /* Т.к. убрали слово и выравнивание не нужно, заменяем этим */
+            padding-left: 20px
+            padding-top: 20px 
+        &__right-title
+            margin-bottom: 10px
+    /* Футтер сайта */
+    .footer__img
+        width: 500px          /* Уменьшили размер картинки */
+    .footer__title      
+        margin-bottom: 10px
+    .footer__container   /* Размер секции */
+        min-height: 210px
+
+
+@media (max-width: 767px)     /* Адаптивная верстка, мобильная горизонтальная*/
+    .container 
+        width: 540px
+    .nav-menu
+        position: fixed     /* Стилизуем меню выплывающее */
+        top: 0
+        right: -100%          /* Элемент меню сркоется за границы экрана */
+        height: 100vh      /* Высота в единицах VH,описано в блокноте */
+        width: 50%
+        background: #F28B64
+        z-index: 20
+        transition: 0.6s all
+        &__list                   /* Стелизуем меню */
+            flex-direction: column
+            justify-content: space-evenly
+            align-items: center
+            height: 100%
+        &__list-item
+            margin-right: 0
+    .hamburger                   /* Стилизуем полоски, можно брать всегда эти значения */
+        width: 30px
+        position: fixed
+        top: 40px
+        right: 30px
+        height: 14px              /* (высота 2*3=6, марджин боттом   2*4=8) */
+        z-index: 30
+        span                 /* Три полоски гамбургера */
+            height: 2px
+            width: 100%
+            display: block
+            background: black
+            margin-bottom: 4px
+            transition: 1s all              /* анимация, преображение 1 элемента в другой, s-секунда, all - на все действует */
+            &:last-child
+                margin-bottom: 0
+                font-size: 20px      /* Меняем размер шрифта в меню с 18 на 20 */
+            
+    .hamburger_active         /* это модификатор, в HTML не добавляется, т.к. будет джава скрипт, это будет крестик; чтобы увидеть результат вставь модификатор как 2 класс в коде разработчика именно в го лайф */
+        span
+            margin-bottom: -2px
+            &:nth-child(1)    /* Псевдокласс для первого спана */
+                transform: translateY(3px) rotate(-45deg)
+            &:nth-child(2)    
+                display: none
+            &:nth-child(3)
+                transform: translateY(3px) rotate(45deg)    /* Транслэит сдвигает на 3 пикселя по оси, чтобы крестик был на месте гамбургера  */      
+    .nav-menu_active         /* выезжающее меню для мобильной версии */
+        right: 0px                       /* Чтобы вернуть меню */
+
+@media (max-width: 575px)     /* Адаптивная верстка, мобильная вертикальная*/
+    .container 
+        width: 100%    
+
+
+

@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "style.css",
+	"sources": [
+		"../sass/style.sass"
+	],
+	"sourcesContent": [
+		".main-section {\n    height: 800px; }\n"
+	],
+	"names": [],
+	"mappings": ";;AAAA,AAAA,aAAa,CAAC;EACV,MAAM,EAAE,KAAK;CAAG"
+}
